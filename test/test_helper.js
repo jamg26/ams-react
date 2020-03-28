@@ -19,9 +19,11 @@ before(done => {
     });
 });
 
-after(async () => {
-  // dropping collection after testing
-  for (i in mongoose.connection.collections) {
-    await mongoose.connection.collections[i].drop();
-  }
+beforeEach(async () => {
+  // dropping collection beforeEach
+  try {
+    for (i in mongoose.connection.collections) {
+      await mongoose.connection.collections[i].drop();
+    }
+  } catch (error) {}
 });
