@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const hr_payroll_final_computation = new Schema({
+  final_computation_id: String,
+  basic_salary: String,
+  deminimis: String,
+  allowance: String,
+  reimbursable_allowance: String,
+  ecola: String,
+  notif_date: Date,
+  created_at: Date,
+  updated_at: Date
+});
+
+module.exports = mongoose.model(
+  'hr_payroll_final_computation',
+  hr_payroll_final_computation,
+  'hr_payroll_final_computation'
+);
