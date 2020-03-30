@@ -28,6 +28,36 @@ const HrReferenceGovtOrRecord = require('../models/hr_reference_govt_or_record')
 const HrEmployeeScheduleDetail = require('../models/hr_employee_schedule_detail');
 const HrPayrollFinalComputation = require('../models/hr_payroll_final_computation');
 const HrPayrollComputationOtRate = require('../models/hr_payroll_computation_ot_rate');
+const HrCompanyDepartment = require('../models/hr_company_department');
+const HrPayrollComputationLateDeduct = require('../models/hr_payroll_computation_late_deduct');
+const HrPayrollCompanyAdjustment = require('../models/hr_payroll_company_adjustment');
+const HrEmployeeAttendance = require('../models/hr_employee_attendance');
+const HrCompanyWorkPolicy = require('../models/hr_company_work_policy');
+const HrCompanyCostCenter = require('../models/hr_company_cost_center');
+const HrCashAdvances = require('../models/hr_cash_advances');
+const HrPayrollOneThreethMonthComp = require('../models/hr_payroll_onethreeth_month_comp');
+const HrEmployeeAlternateContact = require('../models/hr_employee_alternate_contact');
+const HrGovtContPhilhealth = require('../models/hr_govt_cont_philhealth');
+const HrPayrollComputationOtCompOption = require('../models/hr_payroll_computation_ot_comp_option');
+const HrPayrollComputationAbsentDeduct = require('../models/hr_payroll_computation_absent_deduct');
+const HrEmployeeAdjustment = require('../models/hr_employee_adjustment');
+const HrEmployeeTraining = require('../models/hr_employee_training');
+const HrMemo = require('../models/hr_memo');
+const HrAssetTransferRequest = require('../models/hr_asset_transfer_request');
+const HrEmployeeInfo = require('../models/hr_employee_info');
+const HrTaxComputation = require('../models/hr_tax_computation');
+const HrEmployeeEmailAddress = require('../models/hr_employee_email_address');
+const HrCompanyPayrollComputation = require('../models/hr_company_payroll_computation');
+const HrPayroll = require('../models/hr_payroll');
+const HrEmployeeSeminar = require('../models/hr_employee_seminar');
+const HrPayrollNewHireProratedComp = require('../models/hr_payroll_new_hire_prorated_comp');
+const HrFormTemplate = require('../models/hr_form_template');
+const HrEmployeeLeaveManagement = require('../models/hr_employee_leavemanagement');
+const HrEmployeeJobDetail = require('../models/hr_employee_job_detail');
+const HrPayrollComputationRestday = require('../models/hr_payroll_computation_restday');
+const HrCompanyBasicInfo = require('../models/hr_company_basic_info');
+const HrReferenceSSSTable = require('../models/hr_reference_sss_table');
+const HrEmployeeEmergencyContact = require('../models/hr_employee_emergency_contact');
 
 describe('Writing in models', () => {
   it('can write users', done => {
@@ -507,7 +537,7 @@ describe('Writing in models', () => {
       .catch(err => console.log(err));
   });
 
-  it('cam write hr_employee_salary', done => {
+  it('can write hr_employee_salary', done => {
     const salary = new HrEmployeeSalary({
       salary_id: 123,
       emp_id: 'Lorem Ipsum',
@@ -785,6 +815,700 @@ describe('Writing in models', () => {
     });
 
     payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_company_department', done => {
+    const department = new HrCompanyDepartment({
+      department_id: 'Lorem Ipsum',
+      department_name: 'Lorem Ipsum',
+      department_code: 'Lorem Ipsum',
+      department_remarks: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      data_status: 'Lorem Ipsum',
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    department
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll_computation_late_deduct', done => {
+    const payroll = new HrPayrollComputationLateDeduct({
+      latededuct_id: 'Lorem Ipsum',
+      basic_salary: 'Lorem Ipsum',
+      deminimis: 'Lorem Ipsum',
+      allowance: 'Lorem Ipsum',
+      reimbursable_allowance: 'Lorem Ipsum',
+      ecola: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll_company_adjustment', done => {
+    const payroll = new HrPayrollCompanyAdjustment({
+      company_adjustment_id: 123,
+      company_adjustment_type: 'Lorem Ipsum',
+      company_adjustment_name: 'Lorem Ipsum',
+      company_adjustment_code: 'Lorem Ipsum',
+      company_adjustment_amount: 'Lorem Ipsum',
+      company_adjustment_applied_before: 'Lorem Ipsum',
+      company_adjustment_taxable: 'Lorem Ipsum',
+      company_adjustment_max_amount: 'Lorem Ipsum',
+      divided_by_period: 'Lorem Ipsum',
+      company_adjustment_remarks: 'Lorem Ipsum',
+      adjustment_status: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_attendance', done => {
+    const attendance = new HrEmployeeAttendance({
+      employee_attendance_id: 123,
+      emp_id: 'Lorem Ipsum',
+      attendance_date: 'Lorem Ipsum',
+      attendance_time_in: 'Lorem Ipsum',
+      attendance_time_out: 'Lorem Ipsum',
+      attendance_type: 'Lorem Ipsum',
+      attendance_status: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    attendance
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_company_work_policy', done => {
+    const policy = new HrCompanyWorkPolicy({
+      companybasicid: 'Lorem Ipsum',
+      work_day_per_year: 'Lorem Ipsum',
+      work_hour_per_day: 'Lorem Ipsum',
+      workhourstart: 'Lorem Ipsum',
+      workhourend: 'Lorem Ipsum',
+      breakhour: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    policy
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_company_cost_center', done => {
+    const cost = new HrCompanyCostCenter({
+      cost_center_id: 123,
+      cost_center_name: 'Lorem Ipsum',
+      cost_center_code: 'Lorem Ipsum',
+      cost_center_remarks: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      data_status: 'Lorem Ipsum',
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    cost
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_cash_advances', done => {
+    const advances = new HrCashAdvances({
+      cash_advance_id: 123,
+      loan_type: 'Lorem Ipsum',
+      emp_id: 'Lorem Ipsum',
+      lender_id: 'Lorem Ipsum',
+      date_of_request: 'Lorem Ipsum',
+      start_of_deduction: 'Lorem Ipsum',
+      end_of_deduction: 'Lorem Ipsum',
+      total_amount: 'Lorem Ipsum',
+      pay_period: 'Lorem Ipsum',
+      pay_amount_per_period: 'Lorem Ipsum',
+      balance: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    advances
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll_onethreeth_month_comp', done => {
+    const payroll = new HrPayrollOneThreethMonthComp({
+      thirteenth_month_id: 'Lorem Ipsum',
+      basic: 'Lorem Ipsum',
+      basic_adjustment: 'Lorem Ipsum',
+      overtime: 'Lorem Ipsum',
+      late_undertime: 'Lorem Ipsum',
+      deminimis: 'Lorem Ipsum',
+      allowance_reimbursable_allowance: 'Lorem Ipsum',
+      bonus: 'Lorem Ipsum',
+      commission: 'Lorem Ipsum',
+      ecola: 'Lorem Ipsum',
+      other_taxable_income: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_alternate_contact', done => {
+    const contact = new HrEmployeeAlternateContact({
+      alternate_contact_id: 123,
+      emp_id: 'Lorem Ipsum',
+      phone_number: 'Lorem Ipsum',
+      contact_person: 'Lorem Ipsum',
+      type: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    contact
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_govt_cont_philhealth', done => {
+    const cont = new HrGovtContPhilhealth({
+      govt_ph_id: 'Lorem Ipsum',
+      basic_salary: 'Lorem Ipsum',
+      bonus: 'Lorem Ipsum',
+      absent_late: 'Lorem Ipsum',
+      overtime: 'Lorem Ipsum',
+      salary_adjustment: 'Lorem Ipsum',
+      deminimis: 'Lorem Ipsum',
+      allowance: 'Lorem Ipsum',
+      commission: 'Lorem Ipsum',
+      reimbursable_allowance: 'Lorem Ipsum',
+      ecola: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      deduction_period: 'Lorem Ipsum',
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    cont
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll_computation_ot_comp_option', done => {
+    const payroll = new HrPayrollComputationOtCompOption({
+      ot_comp_option_id: 'Lorem Ipsum',
+      basic_salary: 'Lorem Ipsum',
+      deminimis: 'Lorem Ipsum',
+      allowance: 'Lorem Ipsum',
+      reimbursable_allowance: 'Lorem Ipsum',
+      ecola: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll_computation_absent_deduct', done => {
+    const payroll = new HrPayrollComputationAbsentDeduct({
+      absentdeduct_id: 'Lorem Ipsum',
+      basic_salary: 'Lorem Ipsum',
+      deminimis: 'Lorem Ipsum',
+      allowance: 'Lorem Ipsum',
+      reimbursable_allowance: 'Lorem Ipsum',
+      ecola: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_adjustment', done => {
+    const adjustment = new HrEmployeeAdjustment({
+      employee_adjustment_id: 123,
+      employee_adjustment_type: 'Lorem Ipsum',
+      employee_adjustment_name: 'Lorem Ipsum',
+      employee_adjustment_code: 'Lorem Ipsum',
+      employee_adjustment_amount: 'Lorem Ipsum',
+      employee_adjustment_apply_before: 'Lorem Ipsum',
+      employee_adjustment_taxable: 'Lorem Ipsum',
+      employee_adjustment_remarks: 'Lorem Ipsum',
+      employee_adjustment_payroll_id: 'Lorem Ipsum',
+      employee_adjustment_emp_id: 'Lorem Ipsum',
+      employee_adjustment_active: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    adjustment
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_training', done => {
+    const training = new HrEmployeeTraining({
+      training_id: 123,
+      emp_id: 'Lorem Ipsum',
+      training_date: 'Lorem Ipsum',
+      training_name: 'Lorem Ipsum',
+      instructor: 'Lorem Ipsum',
+      training_nature: 'Lorem Ipsum',
+      training_cost: 'Lorem Ipsum',
+      training_returningserviceperiod: 'Lorem Ipsum',
+      correspondingamount: 'Lorem Ipsum',
+      training_note: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    training
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_memo', done => {
+    const memo = new HrMemo({
+      memo_id: 123,
+      memo_title: 'Lorem Ipsum',
+      memo_employee: 'Lorem Ipsum',
+      memo_date_recieved: 'Lorem Ipsum',
+      memo_offense_level: 'Lorem Ipsum',
+      memo_da_type: 'Lorem Ipsum',
+      memo_violation_category: 'Lorem Ipsum',
+      memo_slide_date: 'Lorem Ipsum',
+      memo_note: 'Lorem Ipsum',
+      memo_created_at: Date.now(),
+      notif_date: Date.now(),
+      data_status: 'Lorem Ipsum',
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    memo
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_asset_transfer_request', done => {
+    const asset = new HrAssetTransferRequest({
+      asset_transfer_request_id: 'Lorem Ipsum',
+      asset_tag: 'Lorem Ipsum',
+      asset_location: 'Lorem Ipsum',
+      asset_site: 'Lorem Ipsum',
+      asset_department_code: 'Lorem Ipsum',
+      asset_note: 'Lorem Ipsum',
+      asset_assign_to: 'Lorem Ipsum',
+      asset_transfer_request_status: 'Lorem Ipsum',
+      request_date: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    asset
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_info', done => {
+    const info = new HrEmployeeInfo({
+      employee_id: 123,
+      biometrics_id: 'Lorem Ipsum',
+      company_id: 'Lorem Ipsum',
+      fname: 'Lorem Ipsum',
+      mname: 'Lorem Ipsum',
+      lname: 'Lorem Ipsum',
+      gender: 'Lorem Ipsum',
+      civil_status: 'Lorem Ipsum',
+      date_of_birth: 'Lorem Ipsum',
+      address: 'Lorem Ipsum',
+      username: 'Lorem Ipsum',
+      password: 'Lorem Ipsum',
+      lock_user: 'Lorem Ipsum',
+      photofilename: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    info
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_tax_computation', done => {
+    const tax = new HrTaxComputation({
+      tax_computation_id: 'Lorem Ipsum',
+      use_annual_tax_table: 'Lorem Ipsum',
+      non_tax_exemption_ceiling: 'Lorem Ipsum',
+      start_of_annualization: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    tax
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_email_address', done => {
+    const email = new HrEmployeeEmailAddress({
+      email_address_id: 123,
+      emp_id: 'Lorem Ipsum',
+      email: 'Lorem Ipsum',
+      type: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    email
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_company_payroll_computation', done => {
+    const payroll = HrCompanyPayrollComputation({
+      companybasicid: 'Lorem Ipsum',
+      periodpermonth: 'Lorem Ipsum',
+      stationaryperiodschedule: 'Lorem Ipsum',
+      absentdeduction_id: 'Lorem Ipsum',
+      latededuction_id: 'Lorem Ipsum',
+      ot_com_option_id: 'Lorem Ipsum',
+      ot_rate_id: 'Lorem Ipsum',
+      restday_id: 'Lorem Ipsum',
+      newhireprorated_id: 'Lorem Ipsum',
+      newhireprorated_type: 'Lorem Ipsum',
+      deductabsent: 'Lorem Ipsum',
+      deductlate: 'Lorem Ipsum',
+      onethreemonthcomputation_id: 'Lorem Ipsum',
+      finalcomputation_id: 'Lorem Ipsum',
+      finalcomputation_deductabsent: 'Lorem Ipsum',
+      finalcomputation_deductlate: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      work_day_per_month: 'Lorem Ipsum',
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll', done => {
+    const payroll = new HrPayroll({
+      payroll_id: 123,
+      payroll_year: 'Lorem Ipsum',
+      payroll_month: 'Lorem Ipsum',
+      employee_type: 'Lorem Ipsum',
+      period: 'Lorem Ipsum',
+      description: 'Lorem Ipsum',
+      payroll_type: 'Lorem Ipsum',
+      transaction_date: 'Lorem Ipsum',
+      transaction_from: 'Lorem Ipsum',
+      transaction_to: 'Lorem Ipsum',
+      com_phic: 'Lorem Ipsum',
+      com_sss: 'Lorem Ipsum',
+      com_pagibig: 'Lorem Ipsum',
+      com_tax: 'Lorem Ipsum',
+      com_end_of_month: 'Lorem Ipsum',
+      use_annual_calculation: 'Lorem Ipsum',
+      post_status: 'Lorem Ipsum',
+      process_status: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_seminar', done => {
+    const seminar = new HrEmployeeSeminar({
+      seminar_id: 123,
+      emp_id: 'Lorem Ipsum',
+      seminar_date: 'Lorem Ipsum',
+      seminar_name: 'Lorem Ipsum',
+      instructor: 'Lorem Ipsum',
+      seminar_nature: 'Lorem Ipsum',
+      seminar_cost: 'Lorem Ipsum',
+      seminar_returningserviceperiod: 'Lorem Ipsum',
+      correspondingamount: 'Lorem Ipsum',
+      seminar_note: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    seminar
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll_new_hire_prorated_comp', done => {
+    const payroll = new HrPayrollNewHireProratedComp({
+      new_hire_prorated_comp_id: 'Lorem Ipsum',
+      basic_salary: 'Lorem Ipsum',
+      deminimis: 'Lorem Ipsum',
+      allowance: 'Lorem Ipsum',
+      reimbursable_allowance: 'Lorem Ipsum',
+      ecola: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_form_template', done => {
+    const template = new HrFormTemplate({
+      form_template_id: 123,
+      form_template_name: 'Lorem Ipsum',
+      form_template_content: 'Lorem Ipsum',
+      form_template_created_at: Date.now(),
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    template
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_leavemanagement', done => {
+    const leave = new HrEmployeeLeaveManagement({
+      employee_leavemanagement_id: 123,
+      emp_id: 'Lorem Ipsum',
+      pat_mat_credit: 'Lorem Ipsum',
+      sick_credit: 'Lorem Ipsum',
+      leave_credit: 'Lorem Ipsum',
+      vacation_leave: 'Lorem Ipsum',
+      pat_mat_rem: 'Lorem Ipsum',
+      sick_credit_rem: 'Lorem Ipsum',
+      leave_credit_rem: 'Lorem Ipsum',
+      vacation_credit_rem: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    leave
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_job_detail', done => {
+    const job = new HrEmployeeJobDetail({
+      job_detail_id: 123,
+      emp_id: 'Lorem Ipsum',
+      position: 'Lorem Ipsum',
+      department: 'Lorem Ipsum',
+      cost_center: 'Lorem Ipsum',
+      start_date: 'Lorem Ipsum',
+      employment_status: 'Lorem Ipsum',
+      status_effectve_date: 'Lorem Ipsum',
+      daily_hour: 'Lorem Ipsum',
+      employee_type: 'Lorem Ipsum',
+      rohq: 'Lorem Ipsum',
+      consultant: 'Lorem Ipsum',
+      tin_number: 'Lorem Ipsum',
+      philhealth_number: 'Lorem Ipsum',
+      sss_number: 'Lorem Ipsum',
+      hdmf_number: 'Lorem Ipsum',
+      prc_license: 'Lorem Ipsum',
+      passport: 'Lorem Ipsum',
+      sl: 'Lorem Ipsum',
+      vl: 'Lorem Ipsum',
+      leave_credit: 'Lorem Ipsum',
+      schedule_type: 'Lorem Ipsum',
+      no_of_hours_to_work: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      report_to: 'Lorem Ipsum',
+      atc_s: 'Lorem Ipsum',
+      atc_se: 'Lorem Ipsum',
+      atc_sf: 'Lorem Ipsum',
+      atc_swat: 'Lorem Ipsum',
+      atc_s_se: 'Lorem Ipsum',
+      atc_s_ss: 'Lorem Ipsum',
+      atc_s_cf_status_code: 'Lorem Ipsum',
+      atc_s_cf_V: 'Lorem Ipsum',
+      atc_s_cf_VI: 'Lorem Ipsum',
+      region: 'Lorem Ipsum',
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    job
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_payroll_computation_restday', done => {
+    const payroll = new HrPayrollComputationRestday({
+      restday_id: 'Lorem Ipsum',
+      sunday: 'Lorem Ipsum',
+      monday: 'Lorem Ipsum',
+      tuesday: 'Lorem Ipsum',
+      wednesday: 'Lorem Ipsum',
+      thursday: 'Lorem Ipsum',
+      friday: 'Lorem Ipsum',
+      saturday: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    payroll
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_company_basic_info', done => {
+    const info = new HrCompanyBasicInfo({
+      companybasicid: 'Lorem Ipsum',
+      companylogofilename: 'Lorem Ipsum',
+      companyname: 'Lorem Ipsum',
+      natureofbusiness: 'Lorem Ipsum',
+      address1: 'Lorem Ipsum',
+      address2: 'Lorem Ipsum',
+      zipcode: 'Lorem Ipsum',
+      rdo: 'Lorem Ipsum',
+      email: 'Lorem Ipsum',
+      phone: 'Lorem Ipsum',
+      fax: 'Lorem Ipsum',
+      tin_number: 'Lorem Ipsum',
+      sss_number: 'Lorem Ipsum',
+      philhealth_number: 'Lorem Ipsum',
+      hdmf: 'Lorem Ipsum',
+      admin_signatory_name: 'Lorem Ipsum',
+      admin_signatory_position: 'Lorem Ipsum',
+      hr_signatory_name: 'Lorem Ipsum',
+      hr_signatory_position: 'Lorem Ipsum',
+      finance_signatory_name: 'Lorem Ipsum',
+      finance_signatory_position: 'Lorem Ipsum',
+      sss_contribution: 'Lorem Ipsum',
+      philhealth_contribution: 'Lorem Ipsum',
+      esignatoryfilename: 'Lorem Ipsum',
+      hdmf_equ_empr_share: 'Lorem Ipsum',
+      hdmf_share_value: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      deduction_period: 'Lorem Ipsum',
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    info
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_reference_sss_table', done => {
+    const reference = new HrReferenceSSSTable({
+      sss_table_id: 123,
+      min_range: 'Lorem Ipsum',
+      max_range: 'Lorem Ipsum',
+      monthly_salary_credit: 'Lorem Ipsum',
+      ss_er: 'Lorem Ipsum',
+      ss_ee: 'Lorem Ipsum',
+      ss_total: 'Lorem Ipsum',
+      ec_er: 'Lorem Ipsum',
+      total_contribution: 'Lorem Ipsum',
+      seumofw_total_contribution: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    reference
+      .save()
+      .then(() => done())
+      .catch(err => console.log(err));
+  });
+
+  it('can write hr_employee_emergency_contact', done => {
+    const contact = new HrEmployeeEmergencyContact({
+      emergency_contact_id: 123,
+      emp_id: 'Lorem Ipsum',
+      phone_number: 'Lorem Ipsum',
+      contact_person: 'Lorem Ipsum',
+      relationship: 'Lorem Ipsum',
+      address: 'Lorem Ipsum',
+      notif_date: Date.now(),
+      created_at: Date.now(),
+      updated_at: Date.now()
+    });
+
+    contact
       .save()
       .then(() => done())
       .catch(err => console.log(err));
