@@ -1,17 +1,19 @@
 import React from 'react';
-import Header from './components/header';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layouts from './layout';
-import Sidebar from './components/sidebar';
-import Body from './components/body';
 
-const App = () => {
+// pages
+import Home from './components/pages/home';
+
+const App = props => {
   return (
     <div>
-      <Layouts
-        header={() => <Header />}
-        sidebar={() => <Sidebar />}
-        body={() => <Body />}
-      />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/:navigation' component={Layouts} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 };

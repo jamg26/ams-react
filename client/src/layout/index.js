@@ -1,19 +1,26 @@
 import React from 'react';
+import Headers from '../components/header';
+import Sidebars from '../components/sidebar';
+import Body from '../components/body';
 import { Layout } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Layouts = props => {
   return (
-    <div>
+    <Layout>
+      <Header>
+        <Headers />
+      </Header>
       <Layout>
-        <Header>{props.header()}</Header>
-        <Layout>
-          <Sider>{props.sidebar()}</Sider>
-          <Content>{props.body()}</Content>
-        </Layout>
-        {/* <Footer>{props.footer()}</Footer> */}
+        <Sider>
+          <Sidebars />
+        </Sider>
+        <Content>
+          <Body navigation={props.match.params.navigation} />
+        </Content>
       </Layout>
-    </div>
+      {/* <Footer>{props.footer()}</Footer> */}
+    </Layout>
   );
 };
 
