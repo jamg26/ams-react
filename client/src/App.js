@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Layouts from './layout';
-
-// pages
+import Routes from './routes';
 import Home from './components/pages/home';
 
 const App = props => {
@@ -11,7 +9,7 @@ const App = props => {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/:navigation' component={Layouts} />
+          <Routes />
         </Switch>
       </BrowserRouter>
     </div>

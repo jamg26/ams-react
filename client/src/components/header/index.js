@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Menu, Layout } from 'antd';
 
-const Header = () => {
+const { SubMenu } = Menu;
+const { Header, Content, Footer } = Layout;
+
+const Headers = props => {
   return (
-    <div>
-      <div style={{ color: '#fff', fontWeight: 'bold', fontSize: 30 }}>AMS</div>
-    </div>
+    <Layout className='layout' style={{ float: 'right' }}>
+      <Header>
+        <div className='logo' />
+        <Menu
+          theme='dark'
+          mode='horizontal'
+          defaultSelectedKeys={['1']}
+          onClick={e => console.log(e)}
+        >
+          <Menu.Item key='dashboard'>Dashboard</Menu.Item>
+          <Menu.Item key='setup'>Company Setup</Menu.Item>
+          <SubMenu
+            key='sub1'
+            title={
+              <span>
+                <span>Profile</span>
+              </span>
+            }
+          >
+            <Menu.Item key='profile'>Profile</Menu.Item>
+            <Menu.Item key='logout'>Logout</Menu.Item>
+          </SubMenu>
+        </Menu>
+      </Header>
+    </Layout>
   );
 };
 
-export default Header;
+export default Headers;

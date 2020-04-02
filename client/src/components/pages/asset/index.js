@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Dashboard = props => {
-  return <div>Dashboard</div>;
+  return <div>Asset Dashboard</div>;
 };
 
 export default Dashboard;

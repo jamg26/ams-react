@@ -6,20 +6,22 @@ import { Layout } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Layouts = props => {
+  const { path } = props.match;
+
   return (
     <Layout>
-      <Header>
-        <Headers />
-      </Header>
+      <Sider style={{ height: '100vh' }}>
+        <Sidebars navigation={path} />
+      </Sider>
       <Layout>
-        <Sider>
-          <Sidebars />
-        </Sider>
+        <Header>
+          <Headers />
+        </Header>
         <Content>
-          <Body navigation={props.match.params.navigation} />
+          <Body navigation={path} />
         </Content>
+        <Footer style={{ textAlign: 'center' }}></Footer>
       </Layout>
-      {/* <Footer>{props.footer()}</Footer> */}
     </Layout>
   );
 };
