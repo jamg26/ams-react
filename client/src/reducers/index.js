@@ -1,3 +1,6 @@
 import { combineReducers } from 'redux';
+import assets from './asset';
 
-export default combineReducers({});
+export default combineReducers({
+  assets
+});
