@@ -32,7 +32,6 @@ const asset = [
 ];
 
 const Sidebar = props => {
-  const { navigation } = props;
   return (
     <div>
       <div

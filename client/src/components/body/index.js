@@ -14,7 +14,7 @@ import PayrollEmployee from '../pages/payroll/employee';
 import GovtReport from '../pages/payroll/govt-report';
 import PayrollReport from '../pages/payroll/report';
 import AssetDashboard from '../pages/asset';
-import Asset from '../pages/asset/asset-list';
+import Asset from '../pages/asset/assets';
 import AssetAudit from '../pages/asset/audit';
 import AssetReport from '../pages/asset/report';
 import AssetTransaction from '../pages/asset/transaction';

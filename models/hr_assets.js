@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// following name has been changed
+// sku_code to plate_number
+// vendor_number to vendor_name
+// depreciation_date to start_date
+
 const hr_assets = new Schema({
   asset_tag: String,
   asset_type: String,
@@ -22,7 +27,7 @@ const hr_assets = new Schema({
   asset_reasons: String,
   asset_note: String,
   asset_assign_to: String,
-  vendor_number: String,
+  vendor_name: String,
   purchase_order: String,
   purchase_date: String,
   purchase_cost: String,
@@ -38,7 +43,7 @@ const hr_assets = new Schema({
   date_added: String,
   data_entry_by: String,
   maintenance_requestor: String,
-  sku_code: String,
+  plate_number: String,
   sku_number: String,
   MaintenanceDueDate: String,
   maintenance_ticket_no: String,
@@ -47,11 +52,20 @@ const hr_assets = new Schema({
   unit_of_measurement_amount_remaining: String,
   assigned_to_temp: String,
   asset_storage: String,
-  depreciation_date: String,
+  start_date: String,
   invoice_number: String,
   notif_date: Date,
   created_at: Date,
   updated_at: Date
+});
+
+hr_assets.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
 });
 
 module.exports = mongoose.model('hr_assets', hr_assets);

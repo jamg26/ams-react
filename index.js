@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 
 //Models
+require('./models/hr_assets');
 
 // Middlewares
 app.use(bodyParser.json());
@@ -18,6 +19,8 @@ mongoose.connect(
     useUnifiedTopology: true
   }
 );
+
+require('./routes/asset')(app);
 
 // Server Setup
 const PORT = process.env.PORT || 5000;

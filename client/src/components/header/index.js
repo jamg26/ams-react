@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu, Layout } from 'antd';
 
 const { SubMenu } = Menu;
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 const Headers = props => {
   return (

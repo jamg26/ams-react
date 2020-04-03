@@ -7,13 +7,12 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const Layouts = props => {
   const { path } = props.match;
-
   return (
     <Layout>
-      <Sider style={{ height: '100vh' }}>
+      <Sider style={{ height: '100vh', position: 'fixed' }}>
         <Sidebars navigation={path} />
       </Sider>
-      <Layout>
+      <Layout style={{ paddingLeft: 200 }}>
         <Header>
           <Headers />
         </Header>
