@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Select, Col, Row } from 'antd';
+import { Form, Input, InputNumber, Button, Select, Col, Row } from 'antd';
 import Card from './Card';
 
 const AssetForm = props => {
@@ -173,7 +173,14 @@ const AssetForm = props => {
                 }
               ]}
             >
-              <Input type='number' />
+              <InputNumber
+                style={{ width: '100%' }}
+                placeholder='0.00'
+                step='0.00'
+                formatter={value =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                }
+              />
             </Form.Item>
             <Form.Item name='start_date' label='Start Date'>
               <Input type='date' />
@@ -185,17 +192,40 @@ const AssetForm = props => {
         <Row>
           <Col md={8}>
             <Form.Item name='initial_value' label='Initial Value'>
-              <Input step='0.00' type='number' disabled />
+              <InputNumber
+                style={{ width: '100%' }}
+                placeholder='0.00'
+                step='0.00'
+                formatter={value =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                }
+                disabled
+              />
             </Form.Item>
           </Col>
           <Col md={7}>
             <Form.Item name='salvage_value' label='Salvage Cost'>
-              <Input step='0.00' type='number' />
+              <InputNumber
+                style={{ width: '100%' }}
+                placeholder='0.00'
+                step='0.00'
+                formatter={value =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                }
+              />
             </Form.Item>
           </Col>
           <Col md={9}>
             <Form.Item name='depriciable_value' label='Depreciable Cost'>
-              <Input step='0.00' type='number' disabled />
+              <InputNumber
+                style={{ width: '100%' }}
+                placeholder='0.00'
+                step='0.00'
+                formatter={value =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                }
+                disabled
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -214,19 +244,33 @@ const AssetForm = props => {
           </Col>
           <Col md={12}>
             <Form.Item name='useful_life_span' label='Useful Life Span'>
-              <Input step='0.00' type='number' />
+              <InputNumber style={{ width: '100%' }} placeholder='0' />
             </Form.Item>
           </Col>
         </Row>
         <Row>
           <Col md={12}>
             <Form.Item name='depreciation_cost' label='Depreciation Cost'>
-              <Input type='number' />
+              <InputNumber
+                style={{ width: '100%' }}
+                placeholder='0.00'
+                step='0.00'
+                formatter={value =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                }
+              />
             </Form.Item>
           </Col>
           <Col md={12}>
             <Form.Item name='current_cost' label='Current Value'>
-              <Input step='0.00' type='number' />
+              <InputNumber
+                style={{ width: '100%' }}
+                placeholder='0.00'
+                step='0.00'
+                formatter={value =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                }
+              />
             </Form.Item>
           </Col>
         </Row>
