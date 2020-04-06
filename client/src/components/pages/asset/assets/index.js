@@ -1,15 +1,22 @@
 import React from 'react';
-import { PageHeader, Tabs } from 'antd';
+import { PageHeader, Tabs, Button } from 'antd';
 import NewAsset from './components/new';
 import ViewAsset from './components/view';
 import AssetInfo from './components/info';
 
-const Asset = props => {
-  const { TabPane } = Tabs;
-  return (
-    <div>
+import AssetSetupModal from '../../../inc/AssetSetupModal';
+const { TabPane } = Tabs;
+class Asset extends React.Component  {
+  state = {
+    show_asset_setup_modal : false
+  }
+
+  render (){
+    return [
+      <div>
       <PageHeader title='Asset' />
-      <Tabs defaultActiveKey='1' size='large'>
+      <AssetSetupModal show={this.state.show_asset_setup_modal} close={()=>this.setState({show_asset_setup_modal : false })} />
+      <Tabs defaultActiveKey='1' size='large' tabBarExtraContent={<Button type="link" onClick={()=>{this.setState({show_asset_setup_modal : true })}}>Asset Setup and Reference</Button>}>
         <TabPane tab='View Assets' key='view'>
           <ViewAsset />
         </TabPane>
@@ -21,7 +28,10 @@ const Asset = props => {
         </TabPane>
       </Tabs>
     </div>
-  );
+    ]
+  }
+    
+
 };
 
 export default Asset;
