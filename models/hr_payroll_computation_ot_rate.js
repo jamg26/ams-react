@@ -38,7 +38,14 @@ const hr_payroll_computation_ot_rate = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_payroll_computation_ot_rate.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_payroll_computation_ot_rate',
   hr_payroll_computation_ot_rate,

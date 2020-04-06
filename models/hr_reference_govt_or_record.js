@@ -30,7 +30,14 @@ const hr_reference_govt_or_record = new Schema({
   hdmf_loan_file: String,
   hdmf_cal_loan: String
 });
-
+hr_reference_govt_or_record.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_reference_govt_or_record',
   hr_reference_govt_or_record,

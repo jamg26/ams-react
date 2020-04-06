@@ -24,5 +24,12 @@ const hr_payroll = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_payroll.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model('hr_payroll', hr_payroll, 'hr_payroll');
