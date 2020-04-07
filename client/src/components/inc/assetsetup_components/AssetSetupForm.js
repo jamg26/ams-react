@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { api_base_url } from '../../../keys';
 import { Modal, Button } from 'antd';
 import { Row, Col,Divider,Select,AutoComplete,Checkbox} from 'antd';
 const { Option } = Select;
@@ -21,15 +23,74 @@ class AssetSetupForm extends React.Component {
         sub_cat_code_disable: false,
     }
     submit_asset_setup = async ()=>{
-        var duplicate=0;
-        for(var c=0;c<this.props.data.asset_tags.length;c++){
-            var dat=this.props.data.asset_tags[c];
-            console.log(dat.asset_setup_description)
-            if(dat.asset_setup_description==this.state.AssetDescription && dat.asset_setup_category==this.state.AssetCategory && dat.asset_setup_sub_cat==(this.state.AssetSubCategory==""? null : this.state.AssetSubCategory)){
-                duplicate=1;
-                break;
+        if(this.state.AssetDescription!=""){
+            if(this.state.AssetDescriptionCode!=""){
+                if(this.state.AssetCategory!=""){
+                    if(this.state.AssetCategoryCode!=""){
+                        var checksubcode=0;
+                        if(this.state.AssetSubCategory==""){
+
+                        }else{if(this.state.AssetSubCategoryCode==""){checksubcode=1;}}
+                        
+                        if(checksubcode==1){
+                            alert('[temporary alert] blank asset Sub Category Code');
+                        }else{
+                            var duplicate=0;
+                            for(var c=0;c<this.props.data.asset_tags.length;c++){
+                                var dat=this.props.data.asset_tags[c];
+                                console.log(dat.asset_setup_description)
+                                if(dat.asset_setup_description==this.state.AssetDescription && dat.asset_setup_category==this.state.AssetCategory && dat.asset_setup_sub_cat==(this.state.AssetSubCategory==""? null : this.state.AssetSubCategory)){
+                                    duplicate=1;
+                                    break;
+                                }
+                            }
+                            if(duplicate==1){
+                                alert('[temporary alert] Asset Setup Already Exist');
+                            }else{
+                                const headers = {
+                                  'Content-Type': 'application/json'
+                                }
+                                const response = await axios.post(api_base_url+'/api/save_asset_setup',
+                                {
+                                    AssetDescription: this.state.AssetDescription,
+                                    AssetDescriptionCode : this.state.AssetDescriptionCode,
+                                    AssetCategory: this.state.AssetCategory,
+                                    AssetCategoryCode : this.state.AssetCategoryCode,
+                                    AssetSubCategory :this.state.AssetSubCategory,
+                                    AssetSubCategoryCode : this.state.AssetSubCategoryCode,
+                                    SerialNumber : this.state.SerialNumber,
+                                    PlateNumber : this.state.PlateNumber,
+                                },
+                                { headers : headers });
+                                this.setState({
+                                    AssetDescription: '',
+                                    AssetDescriptionCode : '',
+                                    AssetCategory: '',
+                                    AssetCategoryCode : '',
+                                    AssetSubCategory : '',
+                                    AssetSubCategoryCode : '',
+                                    SerialNumber : false,
+                                    PlateNumber : false,
+                                    desc_code_disable : false,
+                                    cat_code_disable: false,
+                                    sub_cat_code_disable: false,
+                                })
+                                alert('[temporary alert] Successfully Added new Asset Setup');
+                            }
+                        }
+                    }else{
+                        alert('[temporary alert] blank asset Category Code');
+                    }
+                }else{
+                    alert('[temporary alert] blank asset Category');
+                }
+            }else{
+                alert('[temporary alert] blank asset description code');
             }
+        }else{
+            alert('[temporary alert] blank asset description');
         }
+        
         
     }
     componentDidUpdate(prevProps){

@@ -32,4 +32,32 @@ module.exports = app => {
     res.send(result);
   });
 
+  app.post('/api/save_asset_setup', async (req,res)=>{
+    const request = req.body;
+    const response= await new SETUP({
+      asset_setup_tag : 'Asset Tag',
+      asset_setup_description : request.AssetDescription,
+      asset_setup_ad : request.AssetDescriptionCode,
+      asset_setup_category : request.AssetCategory,
+      asset_setup_ac : request.AssetCategoryCode,
+      asset_setup_sub_cat : request.AssetSubCategory,
+      asset_setup_sc : request.AssetSubCategoryCode,
+      uom : request.SerialNumber,
+      uom_abbr : request.PlateNumber,
+      asset_setup_status : 'NEW',
+    })
+    await response.save();
+    res.send(request)
+  })
+  app.post('/api/save_site_and_location', async (req, res)=>{
+    const request = req.body;
+    const response= await new SETUP({
+      asset_setup_tag : 'Site And Location',
+      asset_setup_location : request.asset_setup_location,
+      asset_setup_site : request.asset_setup_site,
+      asset_setup_status : 'NEW',
+    })
+    await response.save();
+    res.send(request)
+  })
 };
