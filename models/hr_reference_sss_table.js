@@ -16,7 +16,14 @@ const hr_reference_sss_table = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_reference_sss_table.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_reference_sss_table',
   hr_reference_sss_table,

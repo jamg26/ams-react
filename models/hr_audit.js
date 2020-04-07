@@ -27,5 +27,12 @@ const hr_audit = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_audit.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model('hr_audit', hr_audit, 'hr_audit');

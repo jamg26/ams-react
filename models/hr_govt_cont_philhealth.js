@@ -18,7 +18,14 @@ const hr_govt_cont_philhealth = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_govt_cont_philhealth.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_govt_cont_philhealth',
   hr_govt_cont_philhealth,

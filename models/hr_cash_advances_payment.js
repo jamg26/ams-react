@@ -11,7 +11,14 @@ const hr_cash_advances_payment = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_cash_advances_payment.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_cash_advances_payment',
   hr_cash_advances_payment,

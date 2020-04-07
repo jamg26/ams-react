@@ -8,7 +8,14 @@ const user_cost_center_access = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+user_cost_center_access.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'user_cost_center_access',
   user_cost_center_access

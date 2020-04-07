@@ -13,7 +13,14 @@ const hr_employee_educ_bg = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_employee_educ_bg.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_employee_educ_bg',
   hr_employee_educ_bg,

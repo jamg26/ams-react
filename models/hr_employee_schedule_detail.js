@@ -13,7 +13,14 @@ const hr_employee_schedule_detail = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_employee_schedule_detail.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_employee_schedule_detail',
   hr_employee_schedule_detail,

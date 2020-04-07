@@ -23,7 +23,14 @@ const hr_company_payroll_computation = new Schema({
   created_at: Date,
   updated_at: Date
 });
-
+hr_company_payroll_computation.pre('save', function(next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 module.exports = mongoose.model(
   'hr_company_payroll_computation',
   hr_company_payroll_computation,
