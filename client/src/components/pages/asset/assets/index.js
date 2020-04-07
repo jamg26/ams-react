@@ -10,11 +10,13 @@ import * as actions from '../../../../actions';
 import { api_base_url } from '../../../../keys';
 import AssetSetupModal from '../../../inc/AssetSetupModal';
 const { TabPane } = Tabs;
+
 class Asset extends React.Component {
   state = {
     show_asset_setup_modal: false,
     asset_setup_list: [],
   };
+
   get_asset_setup_list = async () => {
     const headers = {
       'Content-Type': 'application/json',
@@ -22,6 +24,7 @@ class Asset extends React.Component {
     const response = await axios.get(api_base_url + '/api/asset_setup_list', {
       headers: headers,
     });
+
     console.log(response.data);
     this.setState({ asset_setup_list: response.data });
   };
@@ -36,7 +39,7 @@ class Asset extends React.Component {
 
   render() {
     return [
-      <div>
+      <div key={0}>
         <PageHeader title='Asset' />
         <AssetSetupModal
           show={this.state.show_asset_setup_modal}

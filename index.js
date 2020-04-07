@@ -18,7 +18,7 @@ mongoose.connect(
   // 'mongodb://localhost/Accounting',
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   }
 );
 

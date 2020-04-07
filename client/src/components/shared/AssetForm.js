@@ -16,7 +16,7 @@ const AssetForm = (props) => {
       let val = [];
       props.values &&
         Object.keys(props.values).map((keys) => {
-          val.push({
+          return val.push({
             name: keys,
             value: props.values[keys],
           });

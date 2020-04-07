@@ -1,13 +1,14 @@
 import React from 'react';
 import { Menu, Layout } from 'antd';
 import { Modal, Button } from 'antd';
-import { Row, Col,Divider,Select,AutoComplete,Checkbox} from 'antd';
+import { Row, Col, Divider, Select, AutoComplete, Checkbox } from 'antd';
 import AssetSetupForm from './assetsetup_components/AssetSetupForm';
 import SiteAndLocationFrom from './assetsetup_components/SiteAndLocationForm';
 const { Option } = Select;
 const { SubMenu } = Menu;
 const { Header } = Layout;
 class AssetSetup extends React.Component {
+
     state = {
         reference : '1',
     }
@@ -306,6 +307,5 @@ class AssetSetup extends React.Component {
         ]
     }
 }
-
 
 export default AssetSetup;
