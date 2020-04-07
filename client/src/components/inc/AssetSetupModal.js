@@ -15,9 +15,8 @@ class AssetSetup extends React.Component {
     return [
       <Modal
         title='Asset Setup and Reference'
+        // visible={this.props.show}
         visible={this.props.show}
-        //visible={true}
-        key={0}
         onOk={this.handleOk}
         onCancel={this.props.close}
         width={'50%'}
@@ -31,7 +30,7 @@ class AssetSetup extends React.Component {
         <Row gutter='16'>
           <Col span={24}>
             <table
-              className='table table-sm'
+              class='table table-sm'
               style={{ backgroundColor: 'white', marginBottom: '0px' }}
             >
               <thead>
@@ -66,7 +65,11 @@ class AssetSetup extends React.Component {
           />
         ) : (
           <SiteAndLocationFrom
-            data={this.props.data.length != 0 ? this.props.data : []}
+            data={
+              this.props.data.length != 0 && this.state.reference == 2
+                ? this.props.data
+                : []
+            }
           />
         )}
 
@@ -74,7 +77,7 @@ class AssetSetup extends React.Component {
         <Row gutter='16'>
           <Col span={24}>
             <table
-              className='table table-sm table-bordered'
+              class='table table-sm table-bordered'
               style={{ backgroundColor: 'white' }}
             >
               <thead>
@@ -231,7 +234,7 @@ class AssetSetup extends React.Component {
         <Row gutter='16'>
           <Col span={6}>
             <table
-              className='table table-bordered table-sm'
+              class='table table-bordered table-sm'
               style={{ backgroundColor: 'white' }}
             >
               <thead>
@@ -248,7 +251,7 @@ class AssetSetup extends React.Component {
           </Col>
           <Col span={6}>
             <table
-              className='table table-bordered table-sm'
+              class='table table-bordered table-sm'
               style={{ backgroundColor: 'white' }}
             >
               <thead>

@@ -15,7 +15,7 @@ app.use(cors());
 // Database Setup
 mongoose.connect(
   'mongodb+srv://admin:admin@cluster0-kgze8.mongodb.net/ams_main?retryWrites=true&w=majority',
-  //'mongodb://localhost/Accounting',
+  // 'mongodb://localhost/Accounting',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
