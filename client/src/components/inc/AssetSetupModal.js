@@ -8,32 +8,31 @@ const { Option } = Select;
 const { SubMenu } = Menu;
 const { Header } = Layout;
 class AssetSetup extends React.Component {
-  state = {
-    reference: '1',
-  };
-  render() {
-    return [
-      <Modal
-        title='Asset Setup and Reference'
-        // visible={this.props.show}
-        visible={this.props.show}
-        key={0}
-        onOk={this.handleOk}
-        onCancel={this.props.close}
-        width={'50%'}
-        footer={[
-          <Button key='back' onClick={this.props.close}>
-            Return
-          </Button>,
-          ,
-        ]}
-      >
-        <Row gutter='16'>
+
+    state = {
+        reference : '1',
+    }
+    render (){
+        return [
+            <Modal
+            title="Asset Setup and Reference"
+            // visible={this.props.show}
+            visible={this.props.show}
+            onOk={this.handleOk}
+            onCancel={this.props.close}
+            width={'50%'}
+            footer={[
+                <Button key="back" onClick={this.props.close}>
+                  Return
+                </Button>,
+                ,
+              ]}
+            >
+  <Row gutter='16'>
           <Col span={24}>
             <table
               class='table table-sm'
               style={{ backgroundColor: 'white', marginBottom: '0px' }}
-            >
               <thead>
                 <tr style={{ backgroundColor: '#124f62', color: 'white' }}>
                   <th colSpan='7'>Asset Setup and Reference</th>
