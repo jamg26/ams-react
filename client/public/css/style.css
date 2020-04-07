@@ -23,3 +23,9 @@
 .table-bordered td, .table-bordered th{
     border: 1px solid #dee2e6;
 }
+/* .AutoCompleteUpperCase input {
+    text-transform: uppercase;
+}
+.AutoCompleteCapitalize input {
+    text-transform: capitalize;
+} */
