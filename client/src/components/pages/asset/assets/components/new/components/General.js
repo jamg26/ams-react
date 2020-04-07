@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AssetForm from '../../../../../../shared/AssetForm';
 import { connect } from 'react-redux';
 import * as actions from '../../../../../../../actions/';
