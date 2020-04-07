@@ -244,7 +244,64 @@ class AssetSetup extends React.Component {
                 </Col>
             </Row>
             <Divider  />    
-            
+            <Row gutter="16">
+              <Col span={24}>
+                <table class="table table-sm table-bordered" style={{backgroundColor : 'white'}}>
+                    <thead >
+                        <tr style={{backgroundColor : '#124f62', color :'white'}}>
+                            <th colSpan="7">Asset Info Tagging Example</th>
+                        </tr>
+                        <tr>
+                            <th>ASSET</th>
+                            <th>AD CODE</th>
+                            <th>CATEGORY</th>
+                            <th>CN CODE</th>
+                            <th>SUB-CATEGORY</th>
+                            <th>SC CODE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.data.length!=0?this.props.data.asset_tags.map((data, index)=>{
+                            return [
+                                <tr>
+                                    <td style={{verticalAlign : 'middle'}}>{data.asset_setup_description}</td>
+                                    <td style={{verticalAlign : 'middle'}}>{data.asset_setup_ad}</td>
+                                    <td style={{verticalAlign : 'middle'}}>{data.asset_setup_category}</td>
+                                    <td style={{verticalAlign : 'middle'}}>{data.asset_setup_ac}</td>
+                                    <td style={{verticalAlign : 'middle'}}>{data.asset_setup_sub_cat}</td>
+                                    <td style={{verticalAlign : 'middle'}}>{data.asset_setup_sc}</td>
+                                </tr>
+                            ]
+                        }) : null}
+                    </tbody>
+                </table>
+              </Col>
+            </Row>
+            <Row gutter="16">
+              <Col span={12}>
+                <table class="table table-sm table-bordered" style={{backgroundColor : 'white'}}>
+                    <thead >
+                        
+                        <tr>
+                            <th>Location</th>
+                            <th>Site</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.data.length!=0?this.props.data.asset_site_and_location.map((data, index)=>{
+                            return [
+                                <tr>
+                                    <td style={{verticalAlign : 'middle'}} width="50%">{data.asset_setup_location}</td>
+                                    <td style={{verticalAlign : 'middle'}} width="50%">{data.asset_setup_site}</td>
+                                    
+                                </tr>
+                            ]
+                        }) : null}
+                    </tbody>
+                </table>
+              </Col>
+            </Row>
             </Modal>
         ]
     }
