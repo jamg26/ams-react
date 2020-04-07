@@ -16,7 +16,7 @@ class AssetSetup extends React.Component {
             <Modal
             title="Asset Setup and Reference"
             // visible={this.props.show}
-            visible={true}
+            visible={this.props.show}
             onOk={this.handleOk}
             onCancel={this.props.close}
             width={'50%'}
