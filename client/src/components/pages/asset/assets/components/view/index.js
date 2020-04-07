@@ -10,32 +10,32 @@ const View = (props) => {
   const [column, setColumns] = useState([]);
   const [viewModal, setViewModal] = useState(false);
 
-  const [activeColumns, setActiveColumns] = useState([
-    {
-      show: false,
-      title: 'Asset Tag',
-      dataIndex: 'asset_tag',
-    },
-    {
-      show: true,
-      title: 'Asset',
-      dataIndex: 'asset_description',
-    },
-    {
-      show: true,
-      title: 'Category',
-      dataIndex: 'asset_category_name',
-    },
-    {
-      show: true,
-      title: 'Sub Category',
-      dataIndex: 'asset_sub_category',
-    },
-  ]);
+  // const [activeColumns, setActiveColumns] = useState([
+  //   {
+  //     show: false,
+  //     title: 'Asset Tag',
+  //     dataIndex: 'asset_tag',
+  //   },
+  //   {
+  //     show: true,
+  //     title: 'Asset',
+  //     dataIndex: 'asset_description',
+  //   },
+  //   {
+  //     show: true,
+  //     title: 'Category',
+  //     dataIndex: 'asset_category_name',
+  //   },
+  //   {
+  //     show: true,
+  //     title: 'Sub Category',
+  //     dataIndex: 'asset_sub_category',
+  //   },
+  // ]);
 
-  const [assetView, setAssetView] = useState({
-    columns: [],
-  });
+  // const [assetView, setAssetView] = useState({
+  //   columns: [],
+  // });
 
   useEffect(() => {
     const getAssets = async () => {
