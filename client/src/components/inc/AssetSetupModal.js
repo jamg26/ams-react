@@ -1,17 +1,22 @@
 import React from 'react';
 import { Menu, Layout } from 'antd';
 import { Modal, Button } from 'antd';
-import { Row, Col } from 'antd';
-
+import { Row, Col,Divider,Select,AutoComplete,Checkbox} from 'antd';
+import AssetSetupForm from './assetsetup_components/AssetSetupForm';
+import SiteAndLocationFrom from './assetsetup_components/SiteAndLocationForm';
+const { Option } = Select;
 const { SubMenu } = Menu;
 const { Header } = Layout;
 class AssetSetup extends React.Component {
-    
+    state = {
+        reference : '1',
+    }
     render (){
         return [
             <Modal
             title="Asset Setup and Reference"
-            visible={this.props.show}
+            // visible={this.props.show}
+            visible={true}
             onOk={this.handleOk}
             onCancel={this.props.close}
             width={'50%'}
@@ -22,6 +27,32 @@ class AssetSetup extends React.Component {
                 ,
               ]}
             >
+            <Row gutter="16">
+                <Col span={24}>
+                <table class="table table-sm" style={{backgroundColor : 'white',marginBottom : '0px'}}>
+                    <thead >
+                        <tr style={{backgroundColor : '#124f62', color :'white'}}>
+                            <th colSpan="7">Asset Setup and Reference</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style={{verticalAlign : 'middle'}} colSpan="2"></td>
+                            <td style={{verticalAlign : 'middle',textAlign : 'right'}} colSpan="3">
+                            <Select defaultValue="1" onChange={(value)=>this.setState({ reference : value })} value={this.state.reference}>
+                                <Option value="1">Asset Setup</Option>
+                                <Option value="2">Site and Location</Option>
+                            </Select>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                </Col>
+            </Row> 
+            {this.state.reference==1? <AssetSetupForm /> : <SiteAndLocationFrom />}
+            
+            <Divider  />    
             <Row gutter="16">
                 <Col span={24}>
                 <table class="table table-sm table-bordered" style={{backgroundColor : 'white'}}>
@@ -212,6 +243,7 @@ class AssetSetup extends React.Component {
                 </table>
                 </Col>
             </Row>
+            <Divider  />    
             
             </Modal>
         ]

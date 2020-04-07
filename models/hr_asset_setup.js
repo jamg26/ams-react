@@ -35,7 +35,6 @@ hr_asset_setup.pre('save', function(next) {
   next();
 });
 module.exports = mongoose.model(
-  'hr_asset_setup',
-  hr_asset_setup,
-  'hr_asset_setup'
+  'hr_asset_setups',
+  hr_asset_setup
 );

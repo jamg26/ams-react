@@ -4,6 +4,7 @@ import { Table } from 'antd';
 import * as actions from '../../../../../../actions';
 
 const View = (props) => {
+  console.log(props);
   const [activeColumns, setActiveColumns] = useState([
     {
       show: false,

@@ -6,6 +6,7 @@ const app = express();
 
 //Models
 require('./models/hr_assets');
+require('./models/hr_asset_setup');
 
 // Middlewares
 app.use(bodyParser.json());
@@ -21,6 +22,7 @@ mongoose.connect(
 );
 
 require('./routes/asset')(app);
+require('./routes/asset_setup')(app);
 
 // Server Setup
 const PORT = process.env.PORT || 5000;
