@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'antd';
+import { Table, Modal } from 'antd';
 import * as actions from '../../../../../../actions';
+import { columns } from './components/columns';
 
 const View = (props) => {
-  console.log(props);
+  const [assets, setAssets] = useState([]);
+  const [viewAsset, setViewAsset] = useState({});
+  const [column, setColumns] = useState([]);
+  const [viewModal, setViewModal] = useState(false);
+
   const [activeColumns, setActiveColumns] = useState([
     {
       show: false,
@@ -34,22 +39,50 @@ const View = (props) => {
 
   useEffect(() => {
     const getAssets = async () => {
+      if (assets?.length === props.assets?.length) return; // returning null if same size (dont re render)
       props.getAssets();
-      activeColumns.map((columns) => {
-        if (!columns.show) return;
-        assetView.columns.push({
-          title: columns.title,
-          dataIndex: columns.dataIndex,
-          key: columns.key,
-        });
-      });
+      setAssets(props.assets);
+      setColumns(columns);
+      console.log('useEffect rendered');
     };
     getAssets();
-  }, [activeColumns, assetView]);
+  }, [assets, props]);
 
   return (
     <>
-      <Table dataSource={props.assets} columns={assetView.columns} />
+      <Modal
+        title='Information'
+        visible={viewModal}
+        onCancel={() => setViewModal(false)}
+        footer={null}
+        width='90%'
+      >
+        <Table
+          dataSource={viewAsset}
+          columns={column}
+          loading={assets ? false : true}
+          rowKey={(row) => row._id}
+          onRow={(row) => ({
+            onClick: () => {
+              props.gotoTab('info');
+              props.editAsset(row);
+              setViewModal(false);
+            },
+          })}
+        />
+      </Modal>
+      <Table
+        dataSource={assets}
+        columns={column}
+        loading={assets ? false : true}
+        rowKey={(row) => row._id}
+        onRow={(row) => ({
+          onClick: () => {
+            setViewAsset([row]);
+            setViewModal(true);
+          },
+        })}
+      />
     </>
   );
 };

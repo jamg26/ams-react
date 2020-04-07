@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, InputNumber, Button, Select, Col, Row } from 'antd';
 import Card from './Card';
 
-const AssetForm = props => {
+const AssetForm = (props) => {
+  const [editValues, setEditValues] = useState([]);
   const [form] = Form.useForm();
   const { Option } = Select;
-
   const layout = {
     labelCol: { span: 8 },
-    wrapperCol: { span: 16 }
+    wrapperCol: { span: 16 },
   };
+
+  useEffect(() => {
+    const RemapEdit = () => {
+      let val = [];
+      props.values &&
+        Object.keys(props.values).map((keys) => {
+          val.push({
+            name: keys,
+            value: props.values[keys],
+          });
+        });
+      setEditValues(val);
+    };
+    RemapEdit();
+  }, [props]);
 
   return (
     <Form
       {...layout}
       form={form}
       name='asset'
+      fields={editValues}
       onFinish={props.onFinish}
       scrollToFirstError
     >
@@ -24,8 +40,8 @@ const AssetForm = props => {
           <Col span={12}>
             <Form.Item name='asset_description' label='Asset Description'>
               <Select placeholder='Select asset description'>
-                <Option value='male'>Computer</Option>
-                <Option value='female'>Furniture</Option>
+                <Option value='Computer'>Computer</Option>
+                <Option value='Furniture'>Furniture</Option>
               </Select>
             </Form.Item>
 
@@ -46,13 +62,13 @@ const AssetForm = props => {
               <Input />
             </Form.Item>
             <Form.Item
-              name='brand'
+              name='asset_brand'
               label='Brand'
               rules={[
                 {
                   required: true,
-                  message: 'Please input brand.'
-                }
+                  message: 'Please input brand.',
+                },
               ]}
             >
               <Input />
@@ -66,8 +82,8 @@ const AssetForm = props => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input serial.'
-                }
+                  message: 'Please input serial.',
+                },
               ]}
             >
               <Input />
@@ -91,8 +107,8 @@ const AssetForm = props => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input location.'
-                }
+                  message: 'Please input location.',
+                },
               ]}
             >
               <Input />
@@ -103,8 +119,8 @@ const AssetForm = props => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input site.'
-                }
+                  message: 'Please input site.',
+                },
               ]}
             >
               <Input />
@@ -130,8 +146,8 @@ const AssetForm = props => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input vendor name.'
-                }
+                  message: 'Please input vendor name.',
+                },
               ]}
             >
               <Input />
@@ -140,13 +156,13 @@ const AssetForm = props => {
               <Input placeholder='Purchase Order...' />
             </Form.Item>
             <Form.Item
-              name='invoiceNumber'
+              name='invoice_number'
               label='Invoice Number'
               rules={[
                 {
                   required: true,
-                  message: 'Please input invoice number.'
-                }
+                  message: 'Please input invoice number.',
+                },
               ]}
             >
               <Input />
@@ -157,8 +173,8 @@ const AssetForm = props => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input purchase date.'
-                }
+                  message: 'Please input purchase date.',
+                },
               ]}
             >
               <Input type='date' />
@@ -169,15 +185,15 @@ const AssetForm = props => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input purchase cost.'
-                }
+                  message: 'Please input purchase cost.',
+                },
               ]}
             >
               <InputNumber
                 style={{ width: '100%' }}
                 placeholder='0.00'
                 step='0.00'
-                formatter={value =>
+                formatter={(value) =>
                   `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }
               />
@@ -196,7 +212,7 @@ const AssetForm = props => {
                 style={{ width: '100%' }}
                 placeholder='0.00'
                 step='0.00'
-                formatter={value =>
+                formatter={(value) =>
                   `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }
                 disabled
@@ -209,7 +225,7 @@ const AssetForm = props => {
                 style={{ width: '100%' }}
                 placeholder='0.00'
                 step='0.00'
-                formatter={value =>
+                formatter={(value) =>
                   `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }
               />
@@ -221,7 +237,7 @@ const AssetForm = props => {
                 style={{ width: '100%' }}
                 placeholder='0.00'
                 step='0.00'
-                formatter={value =>
+                formatter={(value) =>
                   `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }
                 disabled
@@ -255,7 +271,7 @@ const AssetForm = props => {
                 style={{ width: '100%' }}
                 placeholder='0.00'
                 step='0.00'
-                formatter={value =>
+                formatter={(value) =>
                   `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }
               />
@@ -267,7 +283,7 @@ const AssetForm = props => {
                 style={{ width: '100%' }}
                 placeholder='0.00'
                 step='0.00'
-                formatter={value =>
+                formatter={(value) =>
                   `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }
               />
@@ -277,7 +293,7 @@ const AssetForm = props => {
       </Card>
       <Form.Item style={{ marginTop: 10 }}>
         <Button type='primary' htmlType='submit'>
-          Register
+          Submit
         </Button>
       </Form.Item>
     </Form>
