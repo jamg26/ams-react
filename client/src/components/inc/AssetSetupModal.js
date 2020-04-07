@@ -17,6 +17,7 @@ class AssetSetup extends React.Component {
         title='Asset Setup and Reference'
         // visible={this.props.show}
         visible={this.props.show}
+        key={0}
         onOk={this.handleOk}
         onCancel={this.props.close}
         width={'50%'}
