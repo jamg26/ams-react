@@ -28,7 +28,7 @@ class Asset extends React.Component  {
     return [
       <div>
       <PageHeader title='Asset' />
-      <AssetSetupModal show={this.state.show_asset_setup_modal} close={()=>this.setState({show_asset_setup_modal : false })}  />
+      <AssetSetupModal show={this.state.show_asset_setup_modal} close={()=>this.setState({show_asset_setup_modal : false })} data={this.state.asset_setup_list}  />
       <Tabs defaultActiveKey='1' size='large' tabBarExtraContent={<Button type="link" onClick={()=>{this.setState({show_asset_setup_modal : true })}}>Asset Setup and Reference</Button>}>
         <TabPane tab='View Assets' key='view'>
           <ViewAsset />

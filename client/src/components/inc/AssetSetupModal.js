@@ -50,7 +50,7 @@ class AssetSetup extends React.Component {
                 </table>
                 </Col>
             </Row> 
-            {this.state.reference==1? <AssetSetupForm /> : <SiteAndLocationFrom />}
+            {this.state.reference==1? <AssetSetupForm data={this.props.data.length!=0? this.props.data : []} /> : <SiteAndLocationFrom data={this.props.data.length!=0? this.props.data : []} />}
             
             <Divider  />    
             <Row gutter="16">
