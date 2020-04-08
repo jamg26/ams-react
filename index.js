@@ -7,6 +7,9 @@ const app = express();
 //Models
 require('./models/hr_assets');
 require('./models/hr_asset_setup');
+require('./models/hr_asset_request');
+require('./models/users');
+require('./models/hr_asset_transaction_log');
 
 // Middlewares
 app.use(bodyParser.json());
@@ -14,8 +17,8 @@ app.use(cors());
 
 // Database Setup
 mongoose.connect(
-  'mongodb+srv://admin:admin@cluster0-kgze8.mongodb.net/ams_main?retryWrites=true&w=majority',
-  // 'mongodb://localhost/Accounting',
+  // 'mongodb+srv://admin:admin@cluster0-kgze8.mongodb.net/ams_main?retryWrites=true&w=majority',
+  'mongodb://localhost/Accounting',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -24,6 +27,7 @@ mongoose.connect(
 
 require('./routes/asset')(app);
 require('./routes/asset_setup')(app);
+require('./routes/asset_dashboard')(app);
 
 // Server Setup
 const PORT = process.env.PORT || 5000;

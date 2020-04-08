@@ -26,7 +26,7 @@ hr_asset_transaction_log.pre('save', function(next) {
   next();
 });
 module.exports = mongoose.model(
-  'hr_asset_transaction_log',
+  'hr_asset_transaction_logs',
   hr_asset_transaction_log,
-  'hr_asset_transaction_log'
+  'hr_asset_transaction_logs'
 );
