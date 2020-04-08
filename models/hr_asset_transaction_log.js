@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 const hr_asset_transaction_log = new Schema({
   asset_transaction_log_id: String,
-  asset_tag: String,
+  asset_tag:  [{ type: Schema.Types.ObjectId, ref: 'hr_assets' }] ,
   log_date: String,
   log_time: String,
   audit_action_date: String,
   log_action: String,
-  log_action_requestor_id: String,
+  log_action_requestor_id: [{ type: Schema.Types.ObjectId, ref: 'users' }] ,
   log_action_requestor: String,
   transaction_action: String,
   transaction_ticket_no: String,

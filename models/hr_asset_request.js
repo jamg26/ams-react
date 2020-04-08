@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const hr_asset_request = new Schema({
   request_id: String,
-  emp_id: String,
-  asset_tag: String,
+  emp_id: [{ type: Schema.Types.ObjectId, ref: 'users' }] ,
+  asset_tag: [{ type: Schema.Types.ObjectId, ref: 'hr_assets' }] ,
   asset_remaining_amount: String,
   asset_borrow_date: Date,
   asset_due_date: Date,
@@ -23,7 +23,7 @@ hr_asset_request.pre('save', function(next) {
   next();
 });
 module.exports = mongoose.model(
-  'hr_asset_request',
+  'hr_asset_requests',
   hr_asset_request,
-  'hr_asset_request'
+  'hr_asset_requests'
 );
