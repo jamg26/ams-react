@@ -5,11 +5,11 @@ const cors = require('cors');
 const app = express();
 
 //Models
+require('./models/hr_asset_transaction_log');
 require('./models/hr_assets');
 require('./models/hr_asset_setup');
 require('./models/hr_asset_request');
 require('./models/users');
-require('./models/hr_asset_transaction_log');
 
 // Middlewares
 app.use(bodyParser.json());

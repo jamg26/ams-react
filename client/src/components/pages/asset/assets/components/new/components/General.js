@@ -10,7 +10,13 @@ const General = (props) => {
     props.getAssets();
   };
 
-  return <AssetForm onFinish={onFinish} />;
+  return <AssetForm onFinish={onFinish} count={props.assetCount} />;
 };
 
-export default connect(null, actions)(General);
+const mapStateToProps = (state) => {
+  return {
+    assetCount: state.assets.assets.length,
+  };
+};
+
+export default connect(mapStateToProps, actions)(General);

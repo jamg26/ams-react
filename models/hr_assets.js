@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Logs = mongoose.model('hr_asset_transaction_logs');
 
 // following name has been changed
 // sku_code to plate_number
@@ -21,7 +22,7 @@ const hr_assets = new Schema({
   asset_site: String,
   asset_location: String,
   asset_department_code: String,
-  asset_setcheck_defualt: String,
+  asset_setcheck_default: String,
   asset_transaction_status: String,
   asset_purchase_order: String,
   asset_reasons: String,
@@ -56,15 +57,21 @@ const hr_assets = new Schema({
   invoice_number: String,
   notif_date: Date,
   created_at: Date,
-  updated_at: Date
+  updated_at: Date,
 });
 
-hr_assets.pre('save', function(next) {
+hr_assets.pre('save', async function (next) {
   now = new Date();
   this.updated_at = now;
   if (!this.created_at) {
     this.created_at = now;
   }
+
+  await new Logs({
+    asset_tag: this._id,
+    log_date: now,
+    log_time: now,
+  }).save();
   next();
 });
 

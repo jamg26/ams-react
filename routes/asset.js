@@ -23,4 +23,18 @@ module.exports = (app) => {
     );
     res.send(assets);
   });
+
+  app.patch('/api/assets/checkout', async (req, res) => {
+    const body = req.body;
+    const assets = await Asset.findOneAndUpdate(
+      { asset_tag: body.tag },
+      {
+        asset_transaction_status: 'Checked Out',
+      },
+      {
+        useFindAndModify: false,
+      }
+    );
+    res.send(assets);
+  });
 };
