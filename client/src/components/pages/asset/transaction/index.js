@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs } from 'antd';
 import CheckOut from './components/check-out';
+import CheckIn from './components/check-in';
 
 const Transaction = (props) => {
   const { TabPane } = Tabs;
@@ -11,7 +12,7 @@ const Transaction = (props) => {
           <CheckOut />
         </TabPane>
         <TabPane tab='Check In' key='checkIn'>
-          Check In
+          <CheckIn />
         </TabPane>
         <TabPane tab='Move/Assign To' key='moveAssignTo'>
           Move/Assign To

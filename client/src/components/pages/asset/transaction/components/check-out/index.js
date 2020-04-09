@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Row,
   Col,
@@ -11,10 +11,13 @@ import {
   Divider,
 } from 'antd';
 import Card from '../../../../../shared/Card';
+import { connect } from 'react-redux';
+import * as actions from '../../../../../../actions';
 
 const CheckOut = (props) => {
   const { Title } = Typography;
   const { Option } = Select;
+  const [selected, setSelected] = useState({});
   const columns = [
     {
       show: true,
@@ -58,24 +61,62 @@ const CheckOut = (props) => {
     wrapperCol: { span: 16 },
   };
 
+  useEffect(() => {
+    const assets = async () => {
+      console.log('object');
+      props.getAssets();
+    };
+    assets();
+  }, []);
+
+  const handleChange = (value) => {
+    let fields = [];
+    props.assets.map((asset) => {
+      console.log(asset);
+      if (asset._id === value) {
+        Object.keys(asset).map((key) => {
+          return fields.push({
+            name: key,
+            value: asset[key],
+          });
+        });
+      }
+    });
+    setSelected(fields);
+  };
+
+  const onFinish = (values) => {
+    props.checkOutAsset(values.asset_tag);
+  };
+
   return (
     <>
       <Form
         name='basic'
         {...layout}
+        fields={selected}
         //initialValues={}
-        // onFinish={onFinish}
+        onFinish={onFinish}
         // onFinishFailed={onFinishFailed}
       >
         <Card title='Asset Detail'>
           <Row justify='end'>
             <Col md={24}>
-              Scan Here:{' '}
+              Scan Here:
               <Select
                 placeholder='Select'
                 showSearch
                 style={{ width: '100%' }}
-              />
+                onChange={handleChange}
+              >
+                {props.assets?.map((asset) => {
+                  return (
+                    <Option value={asset._id} key={asset._id}>
+                      {asset.asset_tag}
+                    </Option>
+                  );
+                })}
+              </Select>
             </Col>
             <Col md={8}>
               <Row>
@@ -86,17 +127,23 @@ const CheckOut = (props) => {
                   <Form.Item label='Asset Tag' name='asset_tag'>
                     <Input />
                   </Form.Item>
-                  <Form.Item label='Asset' name='asset'>
+                  <Form.Item label='Asset' name='asset_description'>
                     <Input />
                   </Form.Item>
-                  <Form.Item label='Site' name='site'>
+                  <Form.Item label='Site' name='asset_site'>
                     <Input />
                   </Form.Item>
-                  <Form.Item label='Location' name='location'>
+                  <Form.Item label='Location' name='asset_location'>
                     <Input />
                   </Form.Item>
-                  <Form.Item label='Department Name' name='department'>
-                    <Select placeholder='Select' />
+                  <Form.Item
+                    label='Department Name'
+                    name='asset_department_code'
+                  >
+                    <Select placeholder='Select'>
+                      <Option value='dept1'>Department 1</Option>
+                      <Option value='dept2'>Department 2</Option>
+                    </Select>
                   </Form.Item>
                 </Col>
               </Row>
@@ -169,4 +216,10 @@ const CheckOut = (props) => {
   );
 };
 
-export default CheckOut;
+const mapStateToProps = (state) => {
+  return {
+    assets: state.assets?.assets,
+  };
+};
+
+export default connect(mapStateToProps, actions)(CheckOut);

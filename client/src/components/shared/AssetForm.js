@@ -26,6 +26,13 @@ const AssetForm = (props) => {
     RemapEdit();
   }, [props]);
 
+  const handleChange = (e) => {
+    let tag = '';
+    if (e === 'Furniture') tag = `FUR-000-${('00' + props.count).slice(-3)}`;
+    if (e === 'Computer') tag = `COMP-000-${('00' + props.count).slice(-3)}`;
+    form.setFieldsValue({ asset_tag: tag });
+  };
+
   return (
     <Form
       {...layout}
@@ -38,8 +45,14 @@ const AssetForm = (props) => {
       <Card title='Asset Information'>
         <Row>
           <Col span={12}>
+            <Form.Item name='asset_tag' label='Asset Tag'>
+              <Input disabled />
+            </Form.Item>
             <Form.Item name='asset_description' label='Asset Description'>
-              <Select placeholder='Select asset description'>
+              <Select
+                placeholder='Select asset description'
+                onChange={handleChange}
+              >
                 <Option value='Computer'>Computer</Option>
                 <Option value='Furniture'>Furniture</Option>
               </Select>

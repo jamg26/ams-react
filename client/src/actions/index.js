@@ -23,6 +23,13 @@ export const updateAsset = (id, data) => async (dispatch) => {
   dispatch({ type: 'ASSET_UPDATE', payload: asset.data });
 };
 
+export const checkOutAsset = (tag) => async (dispatch) => {
+  const asset = await axios.patch('/api/assets/checkout', {
+    tag,
+  });
+  dispatch({ type: 'ASSET_CHECKOUT', payload: asset.data });
+};
+
 // assets parent tabs navigation (tab_asset_parent.js)
 export const gotoTab = (tab) => async (dispatch) => {
   dispatch({ type: 'GOTO_TAB', payload: tab });

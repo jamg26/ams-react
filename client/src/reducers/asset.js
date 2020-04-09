@@ -8,6 +8,8 @@ export default function (state = null, action) {
       return { editAsset: action.payload } || false;
     case 'ASSET_UPDATE':
       return { editAsset: action.payload } || false;
+    case 'ASSET_CHECKOUT':
+      return { ...state, checkedOutAsset: action.payload } || false;
     default:
       return state;
   }
