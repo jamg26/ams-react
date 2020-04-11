@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
+import { connect } from 'react-redux';
+import * as actions from '../../../../actions';
+
 import CheckOut from './components/check-out';
 import CheckIn from './components/check-in';
+import Dispose from './components/dispose';
+import Recover from './components/recover';
+import Maintenance from './components/maintenance';
 
 const Transaction = (props) => {
   const { TabPane } = Tabs;
+  useEffect(() => {
+    const getAssets = async () => {
+      await props.getAssets();
+    };
+    getAssets();
+  }, []);
+
   return (
     <div>
       <Tabs defaultActiveKey='checkOut' size='large'>
@@ -18,13 +31,13 @@ const Transaction = (props) => {
           Move/Assign To
         </TabPane>
         <TabPane tab='Dispose' key='dispose'>
-          Dispose
+          <Dispose />
         </TabPane>
         <TabPane tab='Recover' key='recover'>
-          Recover
+          <Recover />
         </TabPane>
         <TabPane tab='Maintenance' key='maintenance'>
-          Maintenance
+          <Maintenance />
         </TabPane>
         <TabPane tab='Extend Check Out' key='extendCheckOut'>
           Extend Checkout
@@ -34,4 +47,10 @@ const Transaction = (props) => {
   );
 };
 
-export default Transaction;
+const mapStateToProps = (state) => {
+  return {
+    assets: state.assets,
+  };
+};
+
+export default connect(mapStateToProps, actions)(Transaction);

@@ -12,7 +12,6 @@ import {
 } from 'antd';
 import Card from '../../../../../shared/Card';
 import { connect } from 'react-redux';
-import * as actions from '../../../../../../actions';
 
 const CheckOut = (props) => {
   const { Title } = Typography;
@@ -61,14 +60,6 @@ const CheckOut = (props) => {
     wrapperCol: { span: 16 },
   };
 
-  useEffect(() => {
-    const assets = async () => {
-      console.log('object');
-      props.getAssets();
-    };
-    assets();
-  }, []);
-
   const handleChange = (value) => {
     let fields = [];
     props.assets.map((asset) => {
@@ -110,6 +101,7 @@ const CheckOut = (props) => {
                 onChange={handleChange}
               >
                 {props.assets?.map((asset) => {
+                  if (asset.asset_transaction_status === 'Checked Out') return;
                   return (
                     <Option value={asset._id} key={asset._id}>
                       {asset.asset_tag}
@@ -222,4 +214,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(CheckOut);
+export default connect(mapStateToProps)(CheckOut);
