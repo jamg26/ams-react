@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Tabs } from 'antd';
+import { Tabs, PageHeader } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from '../../../../actions';
 
@@ -8,6 +8,7 @@ import CheckIn from './components/check-in';
 import Dispose from './components/dispose';
 import Recover from './components/recover';
 import Maintenance from './components/maintenance';
+import ExtendCheckOut from './components/extend-check-out';
 
 const Transaction = (props) => {
   const { TabPane } = Tabs;
@@ -20,6 +21,7 @@ const Transaction = (props) => {
 
   return (
     <div>
+      <PageHeader title='Transaction' />
       <Tabs defaultActiveKey='checkOut' size='large'>
         <TabPane tab='Check Out' key='checkOut'>
           <CheckOut />
@@ -40,17 +42,11 @@ const Transaction = (props) => {
           <Maintenance />
         </TabPane>
         <TabPane tab='Extend Check Out' key='extendCheckOut'>
-          Extend Checkout
+          <ExtendCheckOut />
         </TabPane>
       </Tabs>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    assets: state.assets,
-  };
-};
-
-export default connect(mapStateToProps, actions)(Transaction);
+export default connect(null, actions)(Transaction);

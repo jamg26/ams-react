@@ -22,12 +22,13 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  }
+  },
 );
 
 require('./routes/asset')(app);
 require('./routes/asset_setup')(app);
 require('./routes/asset_dashboard')(app);
+require('./routes/asset_audit')(app);
 
 // Server Setup
 const PORT = process.env.PORT || 5000;
