@@ -3,7 +3,7 @@ import { Row, Col, Select, Typography, Form, Input, Button, Table, Divider } fro
 import Card from '../../../../../shared/Card';
 import { connect } from 'react-redux';
 
-const CheckIn = (props) => {
+const ExtendCheckOut = (props) => {
   const { Title } = Typography;
   const { Option } = Select;
   const [selected, setSelected] = useState({});
@@ -15,32 +15,32 @@ const CheckIn = (props) => {
     },
     {
       show: true,
-      title: 'Asset',
-      dataIndex: 'asset_description',
+      title: 'Ticket No.',
+      dataIndex: '',
     },
     {
       show: true,
-      title: 'Asset Type',
-      dataIndex: 'asset_category_name',
+      title: 'Asset',
+      dataIndex: '',
     },
     {
       show: true,
       title: 'Location',
-      dataIndex: 'asset_sub_category',
+      dataIndex: '',
     },
     {
       show: true,
       title: 'Department',
-      dataIndex: 'asset_department_code',
+      dataIndex: '',
     },
     {
       show: true,
-      title: 'Asignee ID',
-      dataIndex: 'availability',
+      title: 'Asignee',
+      dataIndex: '',
     },
     {
       show: true,
-      title: 'Due Date',
+      title: 'New Due Date',
       dataIndex: 'asset_transaction_status',
     },
   ];
@@ -132,13 +132,16 @@ const CheckIn = (props) => {
             <Col md={11}>
               <Row>
                 <Col md={24}>
-                  <Title level={2}>Extend By</Title>
+                  <Title level={2}>Check In By</Title>
                 </Col>
                 <Col md={24}>
                   <Form.Item label='Employee ID' name='employee_id'>
                     <Select placeholder='Select' showSearch />
                   </Form.Item>
                   <Form.Item label='Due Date' name='due_date'>
+                    <Input type='date' />
+                  </Form.Item>
+                  <Form.Item label='New Due Date' name='new_due_date'>
                     <Input type='date' />
                   </Form.Item>
                 </Col>
@@ -168,7 +171,7 @@ const CheckIn = (props) => {
             <Col>
               <Form.Item>
                 <Button type='primary' htmlType='submit'>
-                  Check In
+                  Process Request
                 </Button>
               </Form.Item>
             </Col>
@@ -185,4 +188,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(CheckIn);
+export default connect(mapStateToProps)(ExtendCheckOut);

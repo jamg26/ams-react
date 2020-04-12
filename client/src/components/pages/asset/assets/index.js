@@ -56,12 +56,10 @@ class Asset extends React.Component {
               type='link'
               onClick={() => {
                 this.setState({ show_asset_setup_modal: true });
-              }}
-            >
+              }}>
               Asset Setup and Reference
             </Button>
-          }
-        >
+          }>
           <TabPane tab='View Assets' key='view'>
             <ViewAsset />
           </TabPane>
