@@ -1,0 +1,37 @@
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+.table td,
+.table th {
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+.table-sm {
+}
+.table-sm td,
+.table-sm th {
+  padding: 0.3rem;
+}
+.table-bordered {
+  border: 1px solid #dee2e6 !important;
+}
+.table-bordered thead td,
+.table-bordered thead th {
+  border-bottom-width: 2px !important;
+}
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6;
+}
+/* .AutoCompleteUpperCase input {
+    text-transform: uppercase;
+}
+.AutoCompleteCapitalize input {
+    text-transform: capitalize;
+} */
+.ant-pagination {
+  text-align: center !important;
+  margin-bottom: 20px !important;
+}

@@ -1,0 +1,23 @@
+{
+  "name": "sap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --exit",
+    "start": "node index.js",
+    "server": "nodemon index.js --ignore tests",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mocha": "^7.1.1",
+    "mongoose": "^5.9.6",
+    "nodemon": "^2.0.2"
+  }
+}
